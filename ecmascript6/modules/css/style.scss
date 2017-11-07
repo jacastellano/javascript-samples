@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+}
+
+a {
+  color: #0ebeff;
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
