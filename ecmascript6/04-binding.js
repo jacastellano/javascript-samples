@@ -40,8 +40,8 @@ increment(); // it works!!
 console.log(`counter (after increment 2): ${counter.getValue()}`);
 
 // increment counter
-fetch(() => counter.increment()); // it works!!
-function fetch(callback) {
+fetch(200001, () => counter.increment()); // it works!!
+function fetch(id, callback) {
     callback();
 }
 // check value
