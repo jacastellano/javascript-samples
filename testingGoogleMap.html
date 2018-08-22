@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Testing GoogleMap API</title>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script>
+		
+		function initialize() {
+		  
+			var address = 'Málaga, Sp';
+
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode(
+				{
+					'address': address
+				},
+				function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						var Lat = results[0].geometry.location.lat();
+						var Lng = results[0].geometry.location.lng();
+						var myOptions = {
+							zoom: 13,
+							center: new google.maps.LatLng(Lat, Lng)
+						};
+						var map = new google.maps.Map(
+							document.getElementById("map_canvas"), myOptions);
+					} else {
+					  alert("Something got wrong " + status);
+					}
+				}
+			);
+		}
+		  
+		google.maps.event.addDomListener(window, "load", initialize);
+		
+	</script>
+	
+	<style>
+		html,
+		body,
+		#map_canvas {
+		  height: 100%;
+		  width: 100%;
+		  margin: 0px;
+		  padding: 0px
+		}
+	</style>
+	
+  </head>
+  <body>
+	<div id="map_canvas"></div>
+  </body>
+</html>
